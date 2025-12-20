@@ -1,0 +1,90 @@
+# === Python ===
+venv/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+.Python
+
+# pytest
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# pipenv
+Pipfile.lock
+
+# === Node / Frontend ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# lockfiles (optional to ignore or track)
+# package-lock.json
+# yarn.lock
+
+# Frontend build outputs
+/frontend/build/
+/frontend1/build/
+/build/
+
+# === OS & editors ===
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# === Logs ===
+*.log
+logs/
+
+# === Local credentials & secrets ===
+credentials.json
+token.json
+token.json*
+secrets.json
+models.py
+*.pem
+*.key
+.env.local
+
+# === Databases ===
+*.sqlite3
+
+# === Elastic Beanstalk / deployment artifacts ===
+*.zip
+backend-app.zip
+
+# === Generated/temporary files ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# QR codes or generated assets
+backend/qr_codes/
+backend/qr_codes/*
+
+# Docker
+docker-compose.override.yml
+.Dockerfile
+
+# Misc
+coverage/
+
+# End of file
