@@ -2,10 +2,12 @@
 Flask==3.0.0
 Flask-CORS==4.0.0
 python-dotenv==1.0.0
+gunicorn==22.0.0
 
 # Database
 PyMySQL==1.1.0
 SQLAlchemy==2.0.23
+cryptography==44.0.1
 
 # Google Calendar
 google-auth==2.25.2
@@ -20,9 +22,11 @@ langchain-anthropic==0.1.0
 
 # QR Code generation
 qrcode==7.4.2
-# Pillow==10.4.0
+Pillow==10.4.0; python_version < "3.14"
+Pillow>=11.0.0; python_version >= "3.14"
 
 # Utilities
 requests==2.31.0
 python-dateutil==2.8.2
 pytz==2023.3
+google-generativeai==0.8.3

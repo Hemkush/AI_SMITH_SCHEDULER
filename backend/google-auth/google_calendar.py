@@ -3,7 +3,6 @@ import json
 from datetime import datetime, timedelta
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-from google.auth.exceptions import RefreshError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -70,13 +69,7 @@ class GoogleCalendarManager:
         # If there are no (valid) credentials available, let the user log in
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
-                try:
-                    self.creds.refresh(Request())
-                except RefreshError as e:
-                    raise RuntimeError(
-                        "Google token refresh failed (invalid_grant). "
-                        "Regenerate backend/google-auth/token.json using the same OAuth client as credentials.json."
-                    ) from e
+                self.creds.refresh(Request())
             else:
                 if not os.path.exists(self.credentials_file):
                     raise RuntimeError(

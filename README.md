@@ -601,6 +601,8 @@ Results:
 
 ## 📦 Installation
 
+For Docker deployment, see [DOCKER.md](DOCKER.md).
+
 ### Prerequisites
 - Python 3.8+
 - Node.js 16+

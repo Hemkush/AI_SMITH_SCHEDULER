@@ -3,6 +3,7 @@ from flask_cors import CORS
 from datetime import datetime, timedelta
 import json
 import os
+import logging
 
 from database import db
 from google_calendar import calendar_manager
@@ -10,8 +11,14 @@ from mcp_server import agent
 from qr_generator import qr_generator
 
 app = Flask(__name__)
-#CORS(app)  # Enable CORS for React frontend
-CORS(app, origins=["http://localhost:3000"])
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000')
+if cors_origins.strip() == '*':
+    CORS(app)
+else:
+    CORS(app, origins=[origin.strip() for origin in cors_origins.split(',') if origin.strip()])
 
 # CORS(app, resources={
 #     r"/api/*": {
@@ -26,7 +33,6 @@ CORS(app, origins=["http://localhost:3000"])
 def before_request():
     if not db.connection:
         db.connect()
-        calendar_manager.authenticate()
 
 # ============================================
 # STUDENT ENDPOINTS
